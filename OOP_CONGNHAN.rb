@@ -17,7 +17,7 @@ end
 class Congnhan < CanBo 
     attr_accessor :level_258_258
     def inputInf(level_258)
-        @level_258_258 = level_258.to_i
+        @level_258_258 = level_258.to_s
     end
 
     def display()
@@ -59,20 +59,56 @@ class Quanlycanbo
             puts "#{val.display}"
         end
     end
+    def search(sname)
+        $array_officer.each do |val|
+            if(val.name_258 == sname)
+                puts "#{val.display}"
+            else
+                puts ("Khong tim thay ten")
+            end
+    end
+end
 end
 
-canbo1 = CongNhan.new("Tho","21","Nu","DaNang")
-canbo1.inputInf("1")
+canbo1_258 = Congnhan.new("Thao",21,"Nu","DaNang")
+canbo1_258.inputInf("1")
 
 
-canbo2 = NhanVien.new("Tho","21","Nu","DaNang")
-canbo2.inputInf("IT")
+canbo2_258 = NhanVien.new("Thao",21,"Nu","DaNang")
+canbo2_258.inputInf("IT")
 
 
-canbo3 = KySu.new("Tho","21","Nu","DaNang")
-canbo3.inputInf("A")
+canbo3_258 = KySu.new("Thao",21,"Nu","DaNang")
+canbo3_258.inputInf("A")
 
 canboList_258 = Quanlycanbo.new
-canboList_258.inputInf(canbo1)
-canboList_258.inputInf(canbo2)
-canboList_258.inputInf(canbo3)
+canboList_258.inputInf(canbo1_258)
+canboList_258.inputInf(canbo2_258)
+canboList_258.inputInf(canbo3_258)
+manager_officer = Quanlycanbo.new
+ while(true)
+    puts ("1. Them Moi Can Bo")
+    puts ("2. Xem Thong Tin Can Bo")
+    puts ("3. Tim Kiem Can BO")
+    puts ("4.Nhap bat ky de thoat")
+
+    choose = gets.chomp().to_i
+    case choose
+    when 1 
+        manager_officer.inputInf(canbo1_258)
+        manager_officer.inputInf(canbo2_258)
+        manager_officer.inputInf(canbo3_258)
+        puts ("Them thanh cong")
+        puts ("================================================================")
+    when 2
+        manager_officer.outputInfo
+        puts ("================================================================")
+    when 3
+        puts ("Nhap ten: ")
+        name = gets.chomp()
+        manager_officer.search(name)
+    else
+        puts ("Khong hop le")
+        break
+    end
+end
